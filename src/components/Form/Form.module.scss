@@ -1,0 +1,67 @@
+@import '../../styles/index.module.scss';
+
+.formContainer {
+    display: flex;
+    margin: 0 auto;
+    color: white;
+    width: 550px;
+    height: 593px;
+
+    input{
+        border: none;
+        border-bottom: 3px solid #30582f;
+        height: 30px;
+        width: 300px;
+        background-color: #f9ebff23;
+        outline: #0000001a 0.30px solid;
+        color: white;
+        font-family: $font-family-input;
+        padding: 10px;
+        border-radius: 3px;
+    }
+
+    select{
+        border: 1px solid #2F4858;
+        width: 322px;
+        background-color: #f9ebff23;
+        color: white;
+        font-family: $font-family-input;
+        padding: 10px;
+        border-radius: 3px;
+    }
+
+    input:focus-visible{
+        outline: none;
+    }
+
+    p{
+        font-size: 12px;
+    }
+
+    .title{
+        margin-bottom: 4px;
+        font-size: 24px;
+    }
+
+    form{
+        margin: 30px auto;
+        
+        .buttonContainer{
+            display: flex;
+            width: 322px;
+            margin: 40px 0;
+            
+            button{
+                margin: 0 auto;
+                padding: 20px 50px;
+                cursor: pointer;
+                border-radius: 4px;
+                border: 1px solid #00000049;
+                color: white;
+                font-family: $font-family-input;
+                font-size: 24px;
+                background-color: rgba(95, 87, 87, 0.282)
+            }
+        }
+    }
+}

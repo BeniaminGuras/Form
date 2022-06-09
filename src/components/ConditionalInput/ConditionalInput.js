@@ -1,3 +1,5 @@
+import styles from '../Form/Form.module.scss';
+import {PIZZA, SOUP, SANDWICH} from '../../consts';
 
 const ConditionalInput = props => {
 
@@ -28,34 +30,34 @@ const ConditionalInput = props => {
     }
 
 
-    if(props.dish === 'Pizza'){
+    if(props.dish === PIZZA){
         
         return(
             <div>
                 <div>
-                    <p>Number of Slices:</p>
+                    <p className={styles.title}>Number of Slices:</p>
                     <input type="number" value={states.noOfSlices} onChange={noOfSlicesChange} ></input>
                 </div>
                 <div>
-                    <p>Diameter:</p>
+                    <p className={styles.title}>Diameter:</p>
                     <input type="number" step='0.1' value={states.diameter} onChange={diameterChange}></input>
                 </div>
             </div>
         )
-    } else if (props.dish === 'Soup'){
+    } else if (props.dish === SOUP){
 
         return(
             <div>
-                <p>Spiciness scale(from one to ten): </p>
+                <p className={styles.title}>Spiciness scale: </p>
                 <input type="range" min="1" max="10" value={states.spicinessScale} onChange={spicinesssScaleChange}></input>
                 <p>The scale is setup for: <span>{states.spicinessScale}</span></p> 
             </div>
         )
-    } else if (props.dish === 'Sandwich'){
+    } else if (props.dish === SANDWICH){
 
         return(
             <div>
-                <p>Slices of bread:</p>
+                <p className={styles.title}>Slices of bread:</p>
                 <input type='number' value={states.slicesOfBread} onChange={slicesOfBreadChange}></input>
             </div>
         )
