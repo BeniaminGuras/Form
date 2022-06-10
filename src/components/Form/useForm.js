@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import {settings} from '../../settings.js';
+import {PIZZA, SOUP, SANDWICH} from '../../consts.js';
 
 const useForm = () => {
 
@@ -32,6 +33,26 @@ const useForm = () => {
     const onSubmit = e => {
         e.preventDefault();
 
+        const contactAPI = (url, options) => {
+            
+            fetch(url, options)
+            .then(res => {
+                if (!res.ok) {
+                    return res.json()
+                    .then(text => {
+                        for(let key in text){
+                            throw new Error(`${key} ${text[key]}`) 
+                        }
+                    })
+                 } else {
+                    return res.json();
+                }    
+            })
+            .catch(err => {
+                console.log(err);
+              });
+        }
+
         let valid = true; 
 
         const payload = {
@@ -40,12 +61,12 @@ const useForm = () => {
             type: dish,
         }
 
-        if (dish === 'Pizza') {
+        if (dish === PIZZA) {
             payload.no_of_slices = noOfSlices;
             payload.diameter = diameter;
-        } else if (dish === 'Soup') {
+        } else if (dish === SOUP) {
             payload.spiciness_scale = spicinessScale;
-        } else if (dish === 'Sandwich') {
+        } else if (dish === SANDWICH) {
             payload.slices_of_bread = slicesOfBread;
         }
 
@@ -57,7 +78,16 @@ const useForm = () => {
         }
 
         if (valid) {
-            console.log(payload);
+            const options = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload),
+            }
+
+            contactAPI('https://frosty-wood-6558.getsandbox.com:443/dishes', options);
+
         } else {
             alert('Wszystkie pola musza byc uzupelnione');
         }

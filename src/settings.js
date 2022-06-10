@@ -1,5 +1,7 @@
+import {PIZZA} from './consts';
+
 export const settings = {
-    dish: 'Pizza',
+    dish: 'pizza',
     duration: '00:00:00',
     name: '',
     noOfSlices: 1,

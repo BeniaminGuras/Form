@@ -1,4 +1,4 @@
 
-export const PIZZA = 'Pizza';
-export const SOUP = 'Soup';
-export const SANDWICH = 'Sandwich';
+export const PIZZA = 'pizza';
+export const SOUP = 'soup';
+export const SANDWICH = 'sandwich';
