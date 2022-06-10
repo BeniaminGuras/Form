@@ -14,19 +14,19 @@ const ConditionalInput = props => {
     }
     
     const noOfSlicesChange = e => {  
-        isValid(e.target.value, states.setNoOfSlices);
+        isValid(parseInt(e.target.value), states.setNoOfSlices);
     }
 
     const diameterChange = e => {
-        isValid(e.target.value, states.setDiameter);
+        isValid(parseFloat(e.target.value), states.setDiameter);
     }
 
     const spicinesssScaleChange = e => {
-        states.setSpicinessScale(e.target.value);
+        states.setSpicinessScale(parseInt(e.target.value));
     }
 
     const slicesOfBreadChange = e => {
-        isValid(e.target.value, states.setSlicesOfBread);
+        isValid(parseInt(e.target.value), states.setSlicesOfBread);
     }
 
 
