@@ -46,6 +46,9 @@ const useForm = () => {
                         }
                     });
                  } else {
+                    alert('Submit done');
+                    setName('');
+                    resetAllConditionalValues();
                     return rawResponse.json();
                 }    
             })
