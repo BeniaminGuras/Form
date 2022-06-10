@@ -6,27 +6,29 @@ const ConditionalInput = props => {
     const states = props.states; 
 
     const isValid = (userInput, cb) => {
-        if(userInput >= 0){
-            cb(userInput);
+        const userIntParse = parseInt(userInput);
+
+        if(userIntParse >= 0){
+            cb(userIntParse);
         } else {
             alert('Value cannot be below or equal 0');
         }
     }
     
-    const noOfSlicesChange = e => {  
-        isValid(parseInt(e.target.value), states.setNoOfSlices);
+    const noOfSlicesChange = e => { 
+        isValid(e.target.value, states.setNoOfSlices);
     }
 
     const diameterChange = e => {
-        isValid(parseFloat(e.target.value), states.setDiameter);
+        isValid(e.target.value, states.setDiameter);
     }
 
     const spicinesssScaleChange = e => {
-        states.setSpicinessScale(parseInt(e.target.value));
+        isValid(e.target.value, states.setSpicinessScale);
     }
 
     const slicesOfBreadChange = e => {
-        isValid(parseInt(e.target.value), states.setSlicesOfBread);
+        isValid(e.target.value, states.setSlicesOfBread);
     }
 
 

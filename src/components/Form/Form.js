@@ -3,6 +3,7 @@ import ConditionalInput from "../ConditionalInput/ConditionalInput";
 import styles from './Form.module.scss';
 import useForm from "./useForm";
 import {PIZZA, SOUP, SANDWICH} from '../../consts';
+import PopUpWindow from '../PopUpWindow/PopUpWindow';
 
 const Form = () => {
 
@@ -10,6 +11,7 @@ const Form = () => {
 
     return(
         <div className={styles.formContainer}>
+            <PopUpWindow error={form.error} errorMessage={form.errorMessage} setError={form.setError} /> 
             <form onSubmit={form.onSubmit}>
                 <div className={styles.formOpiton}>
                     <p className={styles.title}>Name:</p>

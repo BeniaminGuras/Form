@@ -11,6 +11,8 @@ const useForm = () => {
     const [diameter, setDiameter] = useState(settings.diameter);
     const [spicinessScale, setSpicinessScale] = useState(settings.spicinessScale);
     const [slicesOfBread, setSlicesOfBread] = useState(settings.slicesOfBread);
+    const [error, setError] = useState(null);
+    const [errorMessage, setErrorMessage] = useState(null);
 
     const conditionalStates = {
         noOfSlices: noOfSlices,
@@ -33,25 +35,26 @@ const useForm = () => {
     const onSubmit = e => {
         e.preventDefault();
 
-        const contactAPI = (url, options) => {
-            
+        const contactAPI = (url, options) => {  
             fetch(url, options)
-            .then(res => {
-                if (!res.ok) {
-                    return res.json()
+            .then(rawResponse => {
+                if (!rawResponse.ok) {
+                    return rawResponse.json()
                     .then(text => {
                         for(let key in text){
-                            throw new Error(`${key} ${text[key]}`) 
+                            throw new Error(`${key} ${text[key]}`)
                         }
-                    })
+                    });
                  } else {
-                    return res.json();
+                    return rawResponse.json();
                 }    
             })
             .catch(err => {
-                alert(err);
+                setError(true);
+                setErrorMessage(err.message);
               });
         }
+
 
         let valid = true; 
 
@@ -69,7 +72,6 @@ const useForm = () => {
         } else if (dish === SANDWICH) {
             payload.slices_of_bread = slicesOfBread;
         }
-
 
         for (let data in payload) {
             if (payload[data] === null || payload[data] === '') {
@@ -89,13 +91,14 @@ const useForm = () => {
             contactAPI('https://frosty-wood-6558.getsandbox.com:443/dishes', options);
 
         } else {
-            alert('Wszystkie pola musza byc uzupelnione');
+            setError(true);
+            setErrorMessage('All fields are required');
         }
     } 
 
     return {name, duration, dish, noOfSlices, diameter, spicinessScale, slicesOfBread,
             setName, setDuration, setDish, setNoOfSlices, setDiameter,
-            setSpicinessScale, setSlicesOfBread, conditionalStates, resetAllConditionalValues, onSubmit}
+            setSpicinessScale, setSlicesOfBread, conditionalStates, resetAllConditionalValues, onSubmit, error, errorMessage, setError}
 
 }
 
