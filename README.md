@@ -1,3 +1,3 @@
 
 
-To setup the project type 'npm start' in the terminal in main project folder.
+To setup the project type 'npm install' and then 'npm start' in a main project folder 'main'.
