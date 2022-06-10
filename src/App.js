@@ -3,9 +3,9 @@ import Container from "./components/Container/Container";
 
 function App() {
   return (
-    <Container>
-      <Form />
-    </Container>
+  <Container>
+    <Form />
+  </Container>
   );
 }
 
