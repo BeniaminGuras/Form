@@ -9,20 +9,20 @@ const PopUpWindow = props => {
   }
   
   return(
-  <div className={clsx(styles.modal, props.error === true && styles.active)}>
-    <div className={styles.modalHeader}>
-			<div className={styles.header}>
-				<h1>Invalid Submit</h1>
-			</div>
-			<div className={styles.icon}>
-				<i className="fa-solid fa-x" onClick={onClick}></i>
-			</div>
+    <div className={clsx(styles.modal, props.error === true && styles.active)}>
+      <div className={styles.modalHeader}>
+        <div className={styles.header}>
+          <h1>Invalid Submit</h1>
+        </div>
+        <div className={styles.icon}>
+          <i className="fa-solid fa-x" onClick={onClick}></i>
+        </div>
+      </div>
+      <div className={styles.modalBody}>
+        <p>{props.errorMessage}</p>
+        <button onClick={onClick}>Close</button>
+      </div>
     </div>
-    <div className={styles.modalBody}>
-    	<p>{props.errorMessage}</p>
-    	<button onClick={onClick}>Close</button>
-    </div>
-  </div>
   )
 }
 
